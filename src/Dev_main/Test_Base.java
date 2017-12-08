@@ -62,7 +62,10 @@ public class Test_Base {
         FileUtils.copyFile(scr, dest);
 
     }
+    public static void A()
+    {
 
+    }
 }
 
 
