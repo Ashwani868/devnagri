@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
@@ -21,11 +20,11 @@ public class Test_Base {
     public static Properties prop;
     public static File file;
 
-//Read the property file
+    //Read the property file
     public static void initialization_prop() throws IOException {
 
         try {
-            file = new File(System.getProperty("user.dir")+"/src/Dev_Resource/Config.properties");
+            file = new File(System.getProperty("user.dir") + "/src/Dev_Resource/Config.properties");
             FileInputStream file_read = new FileInputStream(file);
             prop = new Properties();
             prop.load(file_read);
@@ -35,33 +34,34 @@ public class Test_Base {
             e.printStackTrace();
         }
     }
-// To initalization the browser
-    public static void initialization_browser()
-    {
+
+    // To initalization the browser
+    public static void initialization_browser() {
 
 
-            String browserName = prop.getProperty("browser");
-            if (driver==null)
-                driver = new FirefoxDriver();
-            driver.get(prop.getProperty("url"));
-            driver.manage().window().maximize();
-            //driver.manage().deleteAllCookies();
-
+        String browserName = prop.getProperty("browser");
+        if (driver == null)
+            driver = new FirefoxDriver();
+        driver.get(prop.getProperty("url"));
+        driver.manage().window().maximize();
+        //driver.manage().deleteAllCookies();
 
 
     }
-// To take the screen shot
+
+    // To take the screen shot
     public static void take_Screenshot() throws IOException {
-       /* File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+    /* File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("/home/fourtekit/Desktop/Screenshot"));
 
         return;*/
-        File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String filename =  new SimpleDateFormat("8/12/2017'.txt'").format(new Date());
+        File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String filename = new SimpleDateFormat("8/12/2017'.txt'").format(new Date());
         File dest = new File("/home/fourtekit/Desktop/Screenshot/.png");
         FileUtils.copyFile(scr, dest);
 
-        }
+    }
 
 }
 
